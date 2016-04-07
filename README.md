@@ -7,15 +7,15 @@ This is a simulation of the classical game "Battle Ship" on `TUI` (`Text User In
 ## Building/Complilation
 First, use `git clone` to get the files:
 
-    `git clone git://Irides-Chromium/battle_ship.git`
+`git clone git://Irides-Chromium/battle_ship.git`
 
 Then, change to the directory:
 
-    `cd battle_ship`
+`cd battle_ship`
 
 Last, type:
 
-    `make`
+`make`
 
 All done!!~ Have fun playing the games!
 
