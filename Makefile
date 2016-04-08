@@ -5,7 +5,7 @@ CFLAGS=-Wall
 all: battle_ship
 
 battle_ship: *.o 
-    $(CC) $(CFLAGS) -o battle_ship $<
+    $(CC) $(CFLAGS) -o battle_ship main.o library.o ui.o
 
 .c.o: battle_ship.h $<
 	$(CC) $(CFLAGS) -c $<
