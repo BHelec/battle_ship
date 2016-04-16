@@ -4,8 +4,9 @@
 #include <stdlib.h>
 #include <termios.h>
 
-#define COLS 64
+#define COLS 63
 #define ROWS 38
+/* The width and height for the grid */
 
 enum _state {
     load = 0,
@@ -22,15 +23,43 @@ enum _state {
 };
 
 struct _player {
-    int pos[5][5][2];
     bool alive[5][5];
+    int old_column;
+    int old_row;
+    int pos[5][5][2];
 };
+/* bool alive[5][5] : The hit status of the five ships
+ * int old_column   : Last attack position column
+ * int old_row      : Last attack position row
+ * int pos[5][5][2] : Coordinate of the five ships, determined in state choose_pos
+ */
 
 const char *name[5] = {"Aircraft Carrier", "Battleship", "Submarine", "Destroyer", "Patrol Boat"};
+/* The five ship names. Used for hints */
 
 //ui.c
 char get_key ();
-int get_pos ();
+/*
+ * Get the key pressed from the user.
+ * Part of the User Interface.
+ * @return a char for labeling the key
+ */ 
+
+void map_key (char key);
+/*
+ * Identify the key pressed and do further operations.
+ * Part of the User Interface.
+ * @param the key char from get_key ()
+ */
+
+int get_pos ();         /* should be imbedded in `get_key ()` */
+/*
+ * Get the coordinates from the user of the attack or ship placement.
+ * should be imbedded to: when the user press arrow keys, adjust the 
+ *
+ * int values int the _player structure
+ */
+
 void print_block_blink (int abs_pos);
 void print_grid ();
 void print_hints (enum _state state);

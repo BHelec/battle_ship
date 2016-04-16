@@ -60,31 +60,27 @@ void print_grid () {
     bool labeled = false;
 
     printf ("\e[2;10H");
-    for (r=2;r<ROWS;r++) {
-        if (r % 3 == 0) {           // grid_size + 1
-            printf ("\e[%d;%dH", r, 8);
-            for (c=8;c<COLS;c++) {
-                if (c % 5 == 0) {   // grid_size * 2 + 1
+    for (r=0;r<ROWS;r++) {
+        if (r % 3 == 1) {           // grid_size + 1
+            printf ("\e[%d;%dH", r + 2, 8);
+            for (c=0;c<COLS;c++) {
+                if (c % 5 == 2) {   // grid_size * 2 + 1
                     printf ("+");
                 } else {
                     printf ("-");
                 }
             }
         } else {
-            printf ("\e[%d;%dH", r, 10);
-            for (c=10;c<COLS;c++) {
-                if (r == 2) {
-                    if (c == 72) {
-                        printf (" ");
-                        column_num = 'A';
-                        labeled = true;
-                    } else if (c % 5 == 2) {
+            printf ("\e[%d;%dH", r + 2, 8);
+            for (c=0;c<COLS;c++) {
+                if (r == 0) {
+                    if (c % 5 == 4) {
                         printf ("%c", column_num);
                         column_num++;
                         labeled = true;
                     }
                 }
-                if (c % 5 == 0) {   // grid_size * 2 + 1
+                if (c % 5 == 2) {   // grid_size * 2 + 1
                     printf ("|");
                 } else {
                     if (labeled) {
@@ -94,12 +90,10 @@ void print_grid () {
                     printf (" ");
                 }
             }
-            if (r % 3 == 1) {
-                printf ("\e[%d;%dH%02d", r, 8, r / 3);
-                printf ("\e[%d;%dH%02d", r, 73, r / 3);
+            if (r % 3 == 2) {
+                printf ("\e[%d;%dH%02d", r + 2, 8, r / 3 + 1);
             }
         }
-        printf ("\e[%d;%dH\e[1;7m||\e[0m", r, 71);
     }
 }
 
