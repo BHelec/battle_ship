@@ -24,14 +24,24 @@ enum _state {
 
 struct _player {
     bool alive[5][5];
-    int old_column;
-    int old_row;
+    int old_pos;
     int pos[5][5][2];
 };
-/* bool alive[5][5] : The hit status of the five ships
+/*
+ * bool alive[5][5] : The hit status of the five ships
  * int old_column   : Last attack position column
  * int old_row      : Last attack position row
  * int pos[5][5][2] : Coordinate of the five ships, determined in state choose_pos
+ */
+
+typedef short int pos;
+/*
+ * Not used, only for description.
+ * The position used by attacks and placement.
+ * Using 1 for start and 12 for end.
+ * Can have two variants:
+ * 1. 0905: row first and then column, easy for debugging.
+ * 2. 133 : (row - 1) * 12 + col, shorter, but harder to understand.
  */
 
 const char *name[5] = {"Aircraft Carrier", "Battleship", "Submarine", "Destroyer", "Patrol Boat"};
@@ -56,12 +66,11 @@ int get_pos ();         /* should be imbedded in `get_key ()` */
 /*
  * Get the coordinates from the user of the attack or ship placement.
  * should be imbedded to: when the user press arrow keys, adjust the 
- *
- * int values int the _player structure
+ * int values in the _player structure
  */
 
 void print_block_blink (int abs_pos);
-void print_grid ();
+void print_grid (int start_pos);
 void print_hints (enum _state state);
 void print_status ();
 void update_display (enum _state state);

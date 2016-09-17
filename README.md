@@ -2,19 +2,19 @@ The Battle Ship Game
 ====================
 
 ================================================================================
-
-bbbbbb                               l                       h
-b      b                             l                       h        i
-b      b                             l                       h       i i 
-b      b                             l                       h        i 
-bbbbbb       aaaaa     t      t      l       eee      sss    h hhh         pppp
-b      b   a      a   ttttt  ttttt   l      e   e    s       hh   h   i   p    p
-b      b   a      a    t      t      l     eeeeeee    sss    h    h   i   p    p
-b      b   a     aa    t      t      l      e            s   h    h   i   p    p
-bbbbbb      aaaaa  a    tt     tt     lll    eee      sss    h    h    i  ppppp
-                                                                          p
-                                                                          p
-                                                                          p
+    
+    bbbbbb                               l                       h
+    b      b                             l                       h        i
+    b      b                             l                       h       i i 
+    b      b                             l                       h        i 
+    bbbbbb       aaaaa     t      t      l       eee      sss    h hhh         pppp
+    b      b   a      a   ttttt  ttttt   l      e   e    s       hh   h   i   p    p
+    b      b   a      a    t      t      l     eeeeeee    sss    h    h   i   p    p
+    b      b   a     aa    t      t      l      e            s   h    h   i   p    p
+    bbbbbb      aaaaa  a    tt     tt     lll    eee      sss    h    h    i  ppppp
+                                                                              p
+                                                                              p
+                                                                              p
 
 ================================================================================
 

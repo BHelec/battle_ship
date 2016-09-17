@@ -6,7 +6,7 @@ int main () {
     printf ("\e[2J");           //clear screen
     struct termios saved_state = set_non_canonical ();
 
-    print_grid ();
+    print_grid (206);
     while (getchar () != 'q');
 
     set_canonical (saved_state);//reset terminal
@@ -54,15 +54,30 @@ char get_key () {
     return key;
 }
 
-void print_grid () {
+void print_grid (int start_pos) {
+    /*
+     * Avaliable position:
+     * row: 01 ~ 04
+     * col: 01 ~ 81
+     */
     unsigned short int r, c;        // row and column
     char column_num = 'A';
     bool labeled = false;
 
-    printf ("\e[2;10H");
+    int row;
+    int col;
+    row = start_pos / 100;
+    col = start_pos % 100;
+
+    /*
+     * For positions in method 2.
+     * row = start_pos / 12 + 1;
+     * col = start_pos % 12 + 1;
+     */
+
     for (r=0;r<ROWS;r++) {
         if (r % 3 == 1) {           // grid_size + 1
-            printf ("\e[%d;%dH", r + 2, 8);
+            printf ("\e[%d;%dH", r + row, col);
             for (c=0;c<COLS;c++) {
                 if (c % 5 == 2) {   // grid_size * 2 + 1
                     printf ("+");
@@ -71,7 +86,7 @@ void print_grid () {
                 }
             }
         } else {
-            printf ("\e[%d;%dH", r + 2, 8);
+            printf ("\e[%d;%dH", r + row, col);
             for (c=0;c<COLS;c++) {
                 if (r == 0) {
                     if (c % 5 == 4) {
@@ -91,7 +106,7 @@ void print_grid () {
                 }
             }
             if (r % 3 == 2) {
-                printf ("\e[%d;%dH%02d", r + 2, 8, r / 3 + 1);
+                printf ("\e[%d;%dH%02d", r + row, col, r / 3 + 1);
             }
         }
     }
